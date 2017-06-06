@@ -45,6 +45,14 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+class Weather(db.Model):
+    __tablename__ = 'weather'
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(64), unique=True, index=True)
+    temperature = db.Column(db.String(64), unique=True, index=True)
+
+    def __repr__(self):
+        return '<Weather %r>' % self.username
 
 class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[Required()])
