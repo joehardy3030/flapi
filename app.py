@@ -115,7 +115,7 @@ def get_temperature(date):
     if temperature is None:
         return jsonify({'temperature': 'none'})
     else:
-        return jsonify({'temperature': temperature})
+        return temperature.temperature
 
 if __name__ == '__main__':
     manager.run()
