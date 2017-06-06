@@ -49,10 +49,10 @@ class Weather(db.Model):
     __tablename__ = 'weather'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(64), unique=True, index=True)
-    temperature = db.Column(db.String(64), unique=True, index=True)
+    temperature = db.Column(db.String(64), unique=True, index=False)
 
     def __repr__(self):
-        return '<Weather %r>' % self.username
+        return '<Weather %r>' % self.date
 
 class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[Required()])
