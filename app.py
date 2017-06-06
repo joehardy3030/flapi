@@ -109,6 +109,13 @@ tasks = [
 def get_tasks():
     return jsonify({'tasks': tasks})
 
+@app.route('/weather/<date>', methods=['GET'])
+def get_temperature(date):
+    temperature = Weather.query.filter_by(date=date).first()
+    if temperature is None:
+        return jsonify({'temperature': 'none'})
+    else:
+        return jsonify({'temperature': temperature})
 
 if __name__ == '__main__':
     manager.run()
