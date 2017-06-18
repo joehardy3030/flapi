@@ -58,7 +58,6 @@ class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[Required()])
     submit = SubmitField('Submit')
 
-
 def make_shell_context():
     return dict(app=app, db=db, User=User, Role=Role)
 manager.add_command("shell", Shell(make_context=make_shell_context))
@@ -106,7 +105,7 @@ tasks = [
 ]
 
 
-@app.route('/todo/api/v1.0/tasks', methods=['POST'])
+@app.route('/todo/api/v1.0/tasks/p', methods=['POST'])
 def create_task():
     if not request.json or not 'title' in request.json:
         abort(400)
