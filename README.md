@@ -9,8 +9,11 @@ Options for actual deployment:
 http://flask.pocoo.org/docs/0.12/deploying/
 
 initialize the db migration repository 
+
 python hello.py db init
+
 python hello.py db migrate -m "initial migration"
+
 python hello.py db upgrade
 
 
