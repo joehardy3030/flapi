@@ -10,3 +10,4 @@ http://flask.pocoo.org/docs/0.12/deploying/
 
 initialize the db migration repository 
 python hello.py db init
+
