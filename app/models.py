@@ -20,5 +20,3 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-
-class
