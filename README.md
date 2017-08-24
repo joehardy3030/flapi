@@ -17,5 +17,9 @@ python manage.py db migrate -m "initial migration"
 python manage.py db upgrade
 
 environment variables
-FLAPI_ADMIN=jlhardyphd@gmail.com
 
+export FLAPI_ADMIN=
+
+export MAIL_USERNAME=
+
+export MAIL_PASSWORD=
