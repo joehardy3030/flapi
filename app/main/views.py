@@ -1,4 +1,4 @@
-from flask import render_template, session, redirect, url_for, current_app
+from flask import render_template, session, redirect, url_for, current_app, jsonify
 from .. import db
 from ..models import User
 from ..email import send_email
@@ -25,6 +25,21 @@ def index():
     return render_template('index.html',
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
+
+tasks = [
+    {
+        'id': 1,
+        'title': u'Buy groceries',
+        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
+        'done': False
+    },
+    {
+        'id': 2,
+        'title': u'Learn Python',
+        'description': u'Need to find a good Python tutorial on the web',
+        'done': False
+    }
+]
 
 @main.route('/todo/api/v1.0/tasks', methods=['GET'])
 def get_tasks():
