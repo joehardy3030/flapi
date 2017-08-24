@@ -26,6 +26,11 @@ def index():
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
 
+@main.route('/data/api/v1.0/user', methods=['GET', 'POST'])
+def get_user():
+    user = User.query.filter_by(username="joe").first()
+    return user
+
 tasks = [
     {
         'id': 1,
