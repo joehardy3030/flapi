@@ -1,4 +1,4 @@
-from flask import render_template, session, redirect, url_for, current_app, jsonify
+from flask import render_template, session, redirect, url_for, current_app, jsonify, request
 from .. import db
 from ..models import User
 from ..email import send_email
@@ -60,3 +60,15 @@ tasks = [
 def get_tasks():
     return jsonify({'tasks': tasks})
 
+@main.route('/api/v1.0/tasks/p', methods=['POST'])
+def create_task():
+    if not request.json or not 'title' in request.json:
+        abort(400)
+    task = {
+        'id': tasks[-1]['id'] + 1,
+        'title': request.json['title'],
+        'description': request.json.get('description', ""),
+        'done': False
+    }
+    tasks.append(task)
+    return jsonify({'task': task}), 201
