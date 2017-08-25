@@ -26,10 +26,20 @@ def index():
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
 
-@main.route('/data/api/v1.0/user', methods=['GET', 'POST'])
+
+@main.route('/api/v1.0/user/get', methods=['GET', 'POST'])
 def get_user():
     user_query_result = User.query.filter_by(username='Joe').first()
     return jsonify({'user_id':user_query_result.id})
+
+
+@main.route('/api/v1.0/user/post', methods=['GET', 'POST'])
+def post_user():
+    user = User(username='posted')
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({'result':u'success'})
+
 
 tasks = [
     {
