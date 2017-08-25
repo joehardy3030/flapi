@@ -28,8 +28,8 @@ def index():
 
 @main.route('/data/api/v1.0/user', methods=['GET', 'POST'])
 def get_user():
-    user = User.query.filter_by(username="joe").first()
-    return user
+    user_query_result = User.query.filter_by(username='Joe').first()
+    return jsonify({'user_id':user_query_result.id})
 
 tasks = [
     {
