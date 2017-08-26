@@ -40,7 +40,7 @@ def post_user():
     user = User(username=request.json['username'])
    # db.session.add(user)
    # db.session.commit()
-    return jsonify({'result':User.username}),201
+    return jsonify({'result':'success'}),201
 
 
 tasks = [
