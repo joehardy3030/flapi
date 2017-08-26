@@ -38,8 +38,8 @@ def post_user():
     if not request.json or not 'username' in request.json:
         abort(400)
     user = User(username=request.json['username'])
-   # db.session.add(user)
-   # db.session.commit()
+    db.session.add(user)
+    db.session.commit()
     return jsonify({'result':'success'}),201
 
 
