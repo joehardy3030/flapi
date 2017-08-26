@@ -35,10 +35,12 @@ def get_user():
 
 @main.route('/api/v1.0/user/post', methods=['GET', 'POST'])
 def post_user():
-    user = User(username='posted')
+    if not request.json or not 'username' in request.json:
+        abort(400)
+    user = User(username=request.json['username'])
     db.session.add(user)
     db.session.commit()
-    return jsonify({'result':u'success'})
+    return jsonify({'result':User.username}),201
 
 
 tasks = [
