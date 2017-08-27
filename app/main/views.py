@@ -35,13 +35,19 @@ def get_user():
 
 @main.route('/api/v1.0/user/post', methods=['GET', 'POST'])
 def post_user():
+    """Take a username as the body of a HTTP POST, add user if not already in database"""
     if not request.json or not 'username' in request.json:
         abort(400)
-    user = User(username=request.json['username'])
-    db.session.add(user)
-    db.session.commit()
-    return jsonify({'result':'success'}),201
-
+    #Look for the user
+    user = User.query.filter_by(username=request.json['username']).first()
+    if user is None:
+        #Add the user if not already there
+        user=User(username=request.json['username'])
+        db.session.add(user)
+        db.session.commit()
+        return jsonify({'added':user.username}),201
+    else:
+        return jsonify({'repeat':user.username})
 
 tasks = [
     {
