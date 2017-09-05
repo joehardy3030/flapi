@@ -8,6 +8,13 @@ python manage.py runserver --host 0.0.0.0
 Options for actual deployment: 
 http://flask.pocoo.org/docs/0.12/deploying/
 
+initializing datatbases 
+
+>>> from app import models
+
+>>> db.create_all()
+
+
 initialize the db migration repository 
 
 python manage.py db init
