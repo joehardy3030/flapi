@@ -10,6 +10,8 @@ http://flask.pocoo.org/docs/0.12/deploying/
 
 initializing datatbases 
 
+python manage.py shell
+
 >>> from app import models
 
 >>> db.create_all()
