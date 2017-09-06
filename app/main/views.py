@@ -61,7 +61,7 @@ def add_stock():
     #Add the user if not already there
     #stock=Stock(symbol=request.json['symbol'])
     #stock=Stock(shares=request.json['shares'])
-    stock=Stock(price=request.json['price'],shares=request.json['shares'],symbol=request.json['symbol'])
+    stock=Stock(price=request.json['price'],shares=request.json['shares'],symbol=request.json['symbol'],date=request.json['date'])
     #stock=Stock(date=request.json['date'])
     db.session.add(stock)
     db.session.commit()

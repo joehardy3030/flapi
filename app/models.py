@@ -26,7 +26,7 @@ class Stock(db.Model):
     symbol = db.Column(db.String(64))
     shares = db.Column(db.Float)
     price = db.Column(db.Float)
-  #  date = db.Column(db.DateTime)
+    date = db.Column(db.String(64))
 
     def __repr__(self):
         return '<User %r>' % self.symbol
