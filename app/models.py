@@ -20,3 +20,13 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+class Stock(db.Model):
+    __tablename__ = 'stocks'
+    id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.String(64))
+    shares = db.Column(db.Float)
+    price = db.Column(db.Float)
+  #  date = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return '<User %r>' % self.symbol

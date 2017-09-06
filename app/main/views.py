@@ -1,6 +1,6 @@
 from flask import render_template, session, redirect, url_for, current_app, jsonify, request
 from .. import db
-from ..models import User
+from ..models import User, Stock
 from ..email import send_email
 from . import main
 from .forms import NameForm
@@ -48,6 +48,25 @@ def post_user():
         return jsonify({'added':user.username}),201
     else:
         return jsonify({'repeat':user.username})
+
+
+@main.route('/api/v1.0/user/add_stock', methods=['GET', 'POST'])
+def add_stock():
+    """Take a stock as the body of a HTTP POST, add it to database"""
+    if not request.json or not 'symbol' in request.json:
+        abort(400)
+    #Look for the user
+    #user = User.query.filter_by(username=request.json['username']).first()
+    #if user is None:
+    #Add the user if not already there
+    #stock=Stock(symbol=request.json['symbol'])
+    #stock=Stock(shares=request.json['shares'])
+    stock=Stock(price=request.json['price'],shares=request.json['shares'],symbol=request.json['symbol'])
+    #stock=Stock(date=request.json['date'])
+    db.session.add(stock)
+    db.session.commit()
+    return jsonify({'added':stock.symbol}),201
+
 
 tasks = [
     {
